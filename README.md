@@ -1,23 +1,20 @@
-Mini Task Management System
+# Mini Task Management System
 
-A simple PHP task manager - Add, View, Delete, and Search tasks.
+this is a simple php task manager for the intern practical test.
 
-How to Setup
+## how to setup
 
-//1. Start MySQL and Apache
-
-
+//1. start apache and mysql
 ```bash
 sudo systemctl start mysql
 sudo systemctl start apache2
 ```
 
-//2. Create the database
+//2. go to mysql and create the database
 ```bash
 sudo mysql -u root
 ```
-
-Then paste this inside MySQL:
+then copy paste this inside mysql:
 ```sql
 CREATE DATABASE intern_task_system;
 USE intern_task_system;
@@ -32,13 +29,27 @@ CREATE TABLE tasks (
 EXIT;
 ```
 
-//3. Move project to the right folder to get the code 
+//3. copy the folder to the web directory
 ```bash
 sudo cp -r "/home/walivitigoda/Desktop/Weblock code" /var/www/html/
 ```
 
-//4. Open in browser
+//4. open in browser
 ```
 http://localhost/Weblock%20code/
 ```
 
+## the folder structure
+
+```
+Weblock code/
+├── css/style.css
+├── js/app.js
+├── includes/db.php
+├── actions/
+│   ├── add-task.php
+│   └── delete-task.php
+├── index.php
+├── database.sql
+└── README.md
+```
