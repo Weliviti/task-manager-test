@@ -13,6 +13,7 @@
         <!-- header section -->
         <div class="header">
             <h1>Task Manager</h1>
+            <button id="darkToggle" class="btn btn-dark-toggle" onclick="toggleDarkMode()">Dark</button>
         </div>
         
         <!-- container for everything -->
@@ -20,8 +21,10 @@
 
         <!-- show message if redirected from an action -->
         <?php
+        include 'includes/functions.php';
+
         if (isset($_GET['msg'])) {
-            echo '<div class="msg">' . htmlspecialchars($_GET['msg'], ENT_QUOTES, 'UTF-8') . '</div>';
+            echo '<div class="msg">' . h($_GET['msg']) . '</div>';
         }
         ?>
 
@@ -43,7 +46,8 @@
                     <option value="High">High</option>
                 </select>
 
-                <button type="submit" class="btn btn-blue">Add Task</button>
+                <button type="submit" class="btn btn-blue" id="submitBtn">Add Task</button>
+                <span id="loadingSpinner" class="spinner" style="display:none"></span>
             </form>
         </div>
 
@@ -74,10 +78,10 @@
 
                         while ($row = mysqli_fetch_assoc($result)) {
                             echo '<tr class="task-row">';
-                            echo '<td class="task-title">' . $row['title'] . '</td>';
-                            echo '<td>' . ($row['description'] ? $row['description'] : '-') . '</td>';
-                            echo '<td class="' . strtolower($row['priority']) . '">' . $row['priority'] . '</td>';
-                            echo '<td>' . $row['status'] . '</td>';
+                            echo '<td class="task-title">' . h($row['title']) . '</td>';
+                            echo '<td>' . ($row['description'] ? h($row['description']) : '-') . '</td>';
+                            echo '<td class="' . strtolower(h($row['priority'])) . '">' . h($row['priority']) . '</td>';
+                            echo '<td>' . h($row['status']) . '</td>';
                             echo '<td>
                                     <a href="actions/delete-task.php?id=' . $row['id'] . '" class="btn btn-red" onclick="return confirmDelete()">Delete</a>
                                   </td>';
@@ -87,7 +91,7 @@
                         echo '</table>';
                     } else {
                         // no tasks found
-                        echo '<p style="text-align:center;color:#999;padding:20px;">No tasks yet. Add one above!</p>';
+                        echo '<p class="empty-msg">No tasks yet. Add one above!</p>';
                     }
                     // close the connection
                     mysqli_close($conn);
@@ -99,7 +103,7 @@
         <!-- link to javascript file -->
         <script src="js/app.js"></script>
 
-        <!-- form validation -->
+        <!-- form validation + loading state -->
         <script>
         function validateForm() {
             var title = document.getElementById('title').value.trim();
@@ -111,6 +115,10 @@
                 alert('Title must be at least 3 characters');
                 return false;
             }
+
+            // show loading spinner
+            document.getElementById('submitBtn').style.display = 'none';
+            document.getElementById('loadingSpinner').style.display = 'inline-block';
             return true;
         }
         </script>

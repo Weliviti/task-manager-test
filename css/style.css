@@ -10,11 +10,29 @@ body {
     color: white;
     text-align: center;
     padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
 }
 
 .header h1 {
     margin: 0;
     font-size: 24px;
+}
+
+.btn-dark-toggle {
+    background: #555;
+    color: white;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+.btn-dark-toggle:hover {
+    background: #666;
 }
 
 .container {
@@ -110,6 +128,87 @@ button, .btn {
 
 .search-box {
     margin-bottom: 10px;
+}
+
+.action-cell {
+    white-space: nowrap;
+}
+
+.action-cell .btn {
+    margin: 2px;
+}
+
+.empty-msg {
+    text-align: center;
+    color: #999;
+    padding: 20px;
+}
+
+/* Loading spinner */
+.spinner {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 3px solid #ccc;
+    border-top: 3px solid #007bff;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Dark mode */
+body.dark-mode {
+    background: #1a1a2e;
+    color: #eee;
+}
+
+body.dark-mode .header {
+    background: #16213e;
+}
+
+body.dark-mode .card {
+    background: #0f3460;
+    border-color: #1a1a2e;
+}
+
+body.dark-mode .card h2 {
+    color: #e0e0e0;
+}
+
+body.dark-mode th {
+    background: #16213e;
+    color: #ddd;
+}
+
+body.dark-mode th, body.dark-mode td {
+    border-color: #1a1a2e;
+}
+
+body.dark-mode tr:hover {
+    background: #1a1a5e;
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+    background: #16213e;
+    color: #eee;
+    border-color: #0f3460;
+}
+
+body.dark-mode .msg {
+    background: #1b4332;
+    border-color: #2d6a4f;
+    color: #95d5b2;
+}
+
+body.dark-mode .btn-dark-toggle {
+    background: #0f3460;
 }
 
 /* Mobile */
