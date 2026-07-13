@@ -4,13 +4,13 @@ this is a simple php task manager for the intern practical test.
 
 ## how to setup
 
-//1. start apache and mysql
+1. start apache and mysql
 ```bash
 sudo systemctl start mysql
 sudo systemctl start apache2
 ```
 
-//2. go to mysql and create the database
+2. go to mysql and create the database
 ```bash
 sudo mysql -u root
 ```
@@ -29,12 +29,12 @@ CREATE TABLE tasks (
 EXIT;
 ```
 
-//3. copy the folder to the web directory
+3. copy the folder to the web directory
 ```bash
 sudo cp -r "/home/walivitigoda/Desktop/Weblock code" /var/www/html/
 ```
 
-//4. open in browser
+4. open in browser
 ```
 http://localhost/Weblock%20code/
 ```
