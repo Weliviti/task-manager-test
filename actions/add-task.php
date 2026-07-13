@@ -18,20 +18,18 @@ if (strlen($title) < 3) {
     exit;
 }
 
-// this will prevent sql injection attacks
-$title = mysqli_real_escape_string($conn, $title);
-$description = mysqli_real_escape_string($conn, $description);
-$priority = mysqli_real_escape_string($conn, $priority);
-
-// this query will insert the task into the database
-$sql = "INSERT INTO tasks (title, description, priority) 
-        VALUES ('$title', '$description', '$priority')";
+// using prepared statement for safety (prevents SQL injection)
+$stmt = mysqli_prepare($conn, "INSERT INTO tasks (title, description, priority) VALUES (?, ?, ?)");
+mysqli_stmt_bind_param($stmt, 'sss', $title, $description, $priority);
 
 // if the query works it will redirect with success message
-if (mysqli_query($conn, $sql)) {
+if (mysqli_stmt_execute($stmt)) {
     header('Location: ../index.php?msg=Task added successfully!');
 } else {
     //if query fails show error
     header('Location: ../index.php?msg=Error: ' . mysqli_error($conn));
 }
+
+mysqli_stmt_close($stmt);
+mysqli_close($conn);
 ?>

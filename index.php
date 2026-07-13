@@ -21,7 +21,7 @@
         <!-- show message if redirected from an action -->
         <?php
         if (isset($_GET['msg'])) {
-            echo '<div class="msg">' . $_GET['msg'] . '</div>';
+            echo '<div class="msg">' . htmlspecialchars($_GET['msg'], ENT_QUOTES, 'UTF-8') . '</div>';
         }
         ?>
 
