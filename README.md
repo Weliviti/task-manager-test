@@ -18,6 +18,8 @@ then copy paste this inside mysql:
 ```sql
 CREATE DATABASE intern_task_system;
 USE intern_task_system;
+
+-- create the table
 CREATE TABLE tasks (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
@@ -26,6 +28,11 @@ CREATE TABLE tasks (
     status ENUM('Pending','Completed') DEFAULT 'Pending',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- create a user for php to connect
+CREATE USER IF NOT EXISTS 'phpuser'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON intern_task_system.* TO 'phpuser'@'localhost';
+FLUSH PRIVILEGES;
 EXIT;
 ```
 

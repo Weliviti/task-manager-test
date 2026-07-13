@@ -3,8 +3,8 @@
 
 //database details
 $host = 'localhost';
-$user = 'root';
-$pass = '';
+$user = 'phpuser';
+$pass = 'password';
 $dbname = 'intern_task_system';
 
 //create connection
