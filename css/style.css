@@ -1,0 +1,133 @@
+body {
+    font-family: Arial;
+    background: #eee;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.container {
+    max-width: 750px;
+    margin: 15px auto;
+    padding: 0 10px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 1px solid #bbb;
+}
+
+.card h2 {
+    margin-top: 0;
+    font-size: 18px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #bbb;
+    padding: 10px 8px;
+    text-align: left;
+    font-size: 13px;
+}
+
+th {
+    background: #f0f0f0;
+}
+
+tr:hover {
+    background: #fafafa;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 7px;
+    margin-bottom: 10px;
+    border: 1px solid #bbb;
+}
+
+button, .btn {
+    padding: 7px 14px;
+    border: 1px solid #999;
+    background: #e0e0e0;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 13px;
+    color: black;
+    display: inline-block;
+}
+
+.btn-blue {
+    background: #007bff;
+    color: white;
+    border: none;
+}
+
+.btn-red {
+    background: #d9534f;
+    color: white;
+    border: none;
+}
+
+.msg {
+    background: #d4edda;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+.high {
+    color: red;
+    font-weight: bold;
+}
+
+.medium {
+    color: #cc8800;
+    font-weight: bold;
+}
+
+.low {
+    color: green;
+    font-weight: bold;
+}
+
+.search-box {
+    margin-bottom: 10px;
+}
+
+/* Mobile */
+@media (max-width: 780px) {
+    .container {
+        width: 95%;
+    }
+
+    .card {
+        padding: 12px;
+    }
+
+    th, td {
+        padding: 6px 4px;
+        font-size: 12px;
+    }
+
+    .header h1 {
+        font-size: 20px;
+    }
+}
