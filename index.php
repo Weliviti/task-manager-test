@@ -1,35 +1,34 @@
 <!DOCTYPE html>
 <html>
  
-//this is the head section of the html file
+<!-- head section -->
     <head>
         <title>Task Manager</title>
         <link rel="stylesheet" href="css/style.css">
     </head>
 
-
-    //this is the body section of the html file
+    <!-- body section -->
     <body>
 
-        // this is the header section of the html file
+        <!-- header section -->
         <div class="header">
             <h1>Task Manager</h1>
         </div>
         
-        //a class for the container of the html file
+        <!-- container for everything -->
         <div class="container">
 
-        //this is the php code for showing the message if redirected from an action
+        <!-- show message if redirected from an action -->
         <?php
         if (isset($_GET['msg'])) {
             echo '<div class="msg">' . $_GET['msg'] . '</div>';
         }
         ?>
 
-        //this is the add new task hear 
+        <!-- add new task form -->
         <div class="card">
             <h2>Add New Task</h2>
-            //a form is created hear and it uses post method for sending data
+            <!-- form uses post method for security -->
             <form method="POST" action="actions/add-task.php" onsubmit="return validateForm()">
                 <label>Task Title *</label>
                 <input type="text" name="title" id="title" placeholder="Enter task title">
@@ -48,21 +47,21 @@
             </form>
         </div>
 
-        //this is for all the tasks
+        <!-- all tasks section -->
         <div class="card">
             <h2>All Tasks</h2>
 
-            //search bar for findng tasks
+            <!-- search bar for filtering tasks -->
             <div class="search-box">
                 <input type="text" id="searchInput" onkeyup="searchTasks()" placeholder="Search by title...">
             </div>
 
                 <?php
-                    //conectin to database
+                    // connect to database
                     include 'includes/db.php';
-                    //get all tasks from the database
+                    // get all tasks newest first
                     $result = mysqli_query($conn, "SELECT * FROM tasks ORDER BY created_at DESC");
-                    //check if there is any tasks in the database
+                    // check if there are tasks
                     if (mysqli_num_rows($result) > 0) {
                         echo '<table>';
                         echo '<tr>
@@ -87,18 +86,20 @@
 
                         echo '</table>';
                     } else {
-                        //if no tasks found this will show
+                        // no tasks found
                         echo '<p style="text-align:center;color:#999;padding:20px;">No tasks yet. Add one above!</p>';
                     }
-                    //close the database connection
+                    // close the connection
                     mysqli_close($conn);
                 ?>
         </div>
 
         </div>
-        //linking the javascript file
+
+        <!-- link to javascript file -->
         <script src="js/app.js"></script>
-        //validation for the form using javascript
+
+        <!-- form validation -->
         <script>
         function validateForm() {
             var title = document.getElementById('title').value.trim();
